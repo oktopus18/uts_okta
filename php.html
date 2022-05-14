@@ -1,0 +1,35 @@
+<?php
+
+    include "koneksi.php";
+
+    ?>
+    <h2>DATA PEMANTAUAN COVID 19 WILAYAH JAWA BARAT PER 17 APRIL 2022 OKTAVIANUS/191011401037</h2>
+    <table border="1">
+         <tr>
+             <td>positif</td>
+             <td>dirawat</td>
+             <td>sembuh</td>
+             <td>meninggal</td>
+             <td>aksi</td>
+         </tr>
+         <?php
+
+              $tampil = mysqli_query($mysqli, "select * from covid");
+              $no = 1;
+              while($hasil = mysqli_fetch_array($tampil)){
+    ?>
+    <tr>
+        <td><?php echo $no++; ?></td>
+        <td><?php echo $hasil['positif']; ?></td>
+        <td><?php echo $hasil['dirawat']; ?></td>
+        <td><?php echo $hasil['sembuh']; ?></td>
+        <td><?php echo $hasil['meninggal']; ?></td>
+        <td>
+             <a>edit</a>|
+            <a>hapus</a>
+        </td>
+    </tr>
+    <?php
+        }
+    ?>
+</table>
